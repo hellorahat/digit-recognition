@@ -1,4 +1,0 @@
-[HOG Only] Accuracy: 0.8789
-[HOG + Dense Zoning] Accuracy: 0.8789
-[HOG + Zoning] Accuracy: 0.8789
-[HOG + Dense Zoning + Projection Histograms] Accuracy: 0.8969
