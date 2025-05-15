@@ -1,3 +1,5 @@
+## Digit Recognition Experiment with Multiple Feature Extraction Strategies
+
 This program runs several pipelines to determine which combination of feature extraction method yields the best results for handwritten digit recognition.
 
 **main.py** serves as the main entrypoint to the program; running all pipelines and saving the models.
