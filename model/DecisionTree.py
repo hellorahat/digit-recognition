@@ -1,3 +1,10 @@
+"""
+DecisionTree.py
+
+This module implements a basic Decision Tree Classifier. Splits
+are computed based on Gini impurity.
+"""
+
 import numpy as np
 
 
