@@ -14,4 +14,4 @@ This program runs several pipelines to determine which combination of feature ex
 **features/zoning.py** implements the Zoning algorithm from scratch.
 
 **model/DecisionTree.py** implements the Decision Tree Classifier from scratch. Splits are computed based on Gini impurity.<br>
-**model/RandomForestClassifier.py** implements a Random Forest Classifier from scratch. The classifier uses bootstrap samping and random feature selection.
+**model/RandomForestClassifier.py** implements a Random Forest Classifier from scratch. The classifier uses bootstrap sampling and random feature selection.
