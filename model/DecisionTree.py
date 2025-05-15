@@ -1,7 +1,7 @@
 """
 DecisionTree.py
 
-This module implements a basic Decision Tree Classifier. Splits
+This module implements a basic Decision Tree Classifier from scratch. Splits
 are computed based on Gini impurity.
 """
 
