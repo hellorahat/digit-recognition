@@ -11,7 +11,6 @@ from model import RandomForest
 import numpy as np
 import os
 from sklearn.metrics import confusion_matrix, classification_report, accuracy_score
-# from sklearn.ensemble import RandomForestClassifier
 
 
 def load_dataset(train_path: str, test_path: str):
@@ -47,7 +46,6 @@ def pipeline_hog(train_path, test_path):
                                                 num_bins=9)
                        for img in X_test])
     # Step 3: Train classifier
-    # clf = RandomForestClassifier(n_estimators=100, max_depth=15, random_state=42)
     clf = RandomForest(num_trees=10, max_depth=15, random_state=42)
     clf.fit(X_train, y_train)
 
@@ -110,7 +108,6 @@ def pipeline_hog_zoning(train_path, test_path):
     X_train = np.array(X_train_feat)
     X_test = np.array(X_test_feat)
     # Step 3: Train classifier
-    # clf = RandomForestClassifier(n_estimators=100, max_depth=15, random_state=42)
     clf = RandomForest(num_trees=10, max_depth=15, random_state=42)
     clf.fit(X_train, y_train)
 
@@ -173,7 +170,6 @@ def pipeline_hog_DenseZoning(train_path, test_path):
     X_train = np.array(X_train_feat)
     X_test = np.array(X_test_feat)
     # Step 3: Train classifier
-    # clf = RandomForestClassifier(n_estimators=100, max_depth=15, random_state=42)
     clf = RandomForest(num_trees=10, max_depth=15, random_state=42)
     clf.fit(X_train, y_train)
 
@@ -212,7 +208,7 @@ def pipeline_hog_DenseZoning(train_path, test_path):
 
 
 # Pipeline 4: HOG + Dense Zoning + Projection Histograms
-def pipeline_hog_DenseZoning_projection(train_path, test_path):
+def pipeline_hog_Zoning_projection(train_path, test_path):
     # Step 1: Load the dataset
     X_train, y_train, X_test, y_test = load_dataset(train_path, test_path)
 
@@ -225,20 +221,19 @@ def pipeline_hog_DenseZoning_projection(train_path, test_path):
     X_test_feat = []
     for img in X_train:
         hog_feat = hog.extract_hog_features(img, cell_size=(4, 4), num_bins=9)
-        zone_feat = zoning.extract_zoning_features(img, grid_size=(2, 2))
+        zone_feat = zoning.extract_zoning_features(img, grid_size=(4, 4))
         stats_feat = np.concatenate([np.sum(img, axis=1), np.sum(img, axis=0)])
         X_train_feat.append(np.concatenate([hog_feat, zone_feat, stats_feat]))
 
     for img in X_test:
         hog_feat = hog.extract_hog_features(img, cell_size=(4, 4), num_bins=9)
-        zone_feat = zoning.extract_zoning_features(img, grid_size=(2, 2))
+        zone_feat = zoning.extract_zoning_features(img, grid_size=(4, 4))
         stats_feat = np.concatenate([np.sum(img, axis=1), np.sum(img, axis=0)])
         X_test_feat.append(np.concatenate([hog_feat, zone_feat, stats_feat]))
 
     X_train = np.array(X_train_feat)
     X_test = np.array(X_test_feat)
     # Step 3: Train classifier
-    # clf = RandomForestClassifier(n_estimators=100, max_depth=15, random_state=42)
     clf = RandomForest(num_trees=10, max_depth=15, random_state=42)
     clf.fit(X_train, y_train)
 
@@ -246,7 +241,7 @@ def pipeline_hog_DenseZoning_projection(train_path, test_path):
     y_pred = clf.predict(X_test)
     acc = accuracy_score(y_test, y_pred)
 
-    print(f"[HOG + Dense Zoning + Projection Histograms] Accuracy: {acc:.4f}")
+    print(f"[HOG + Zoning + Projection Histograms] Accuracy: {acc:.4f}")
 
     # Confusion matrix
     cm = confusion_matrix(y_test, y_pred)
