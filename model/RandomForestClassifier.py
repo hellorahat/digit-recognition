@@ -1,3 +1,12 @@
+"""
+DecisionTree.py
+
+This module implements a basic Decision Tree Classifier from scratch.
+
+Uses bootstrap sampling and random freature selection. Final predictions
+are made by aggregating th eoutputs of individual Decision Trees.
+"""
+
 import numpy as np
 from . import DecisionTree
 
