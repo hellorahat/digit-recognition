@@ -10,7 +10,7 @@ This program runs several pipelines to determine which combination of feature ex
 - Pipeline 3: HOG + Dense Zoning
 - Pipeline 4: HOG + Sparse Zoning + Projection Histogram
 
-**features/hog.py** implements the Histogram of Oriented Gradients algorithm from scratch.
+**features/hog.py** implements the Histogram of Oriented Gradients algorithm from scratch.<br>
 **features/zoning.py** implements the Zoning algorithm from scratch.
 
 **model/DecisionTree.py** implements the Decision Tree Classifier from scratch. Splits are computed based on Gini impurity.<br>
